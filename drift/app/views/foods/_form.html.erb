@@ -1,13 +1,14 @@
-<%= form_for(@food) do |f| %>
-  <div class="field">
+<%= form_for @food, :html => {:class => 'col-xs-3'} do |f| %>
+  <div class="form-group">
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :cost %><br />
-    <%= f.text_field :cost %>
+    <%= f.text_field :cost, class: 'form-control' %>
   </div>
+  <br />
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
