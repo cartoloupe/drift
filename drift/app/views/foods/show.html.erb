@@ -1,0 +1,28 @@
+<h1>Foods#show</h1>
+<p>Find me in app/views/foods/show.html.erb</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Food Name
+      </th>
+      <th>
+        Cost
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @food.each do |f| %>
+      <tr>
+        <td>
+          <%= f.name %>
+        </td>
+        <td>
+          <%= f.cost %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
