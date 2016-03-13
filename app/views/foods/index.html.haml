@@ -25,10 +25,16 @@
           |
           = link_to 'delete', food, method: :delete, data: { confirm: 'Are you sure?' }
 %label
-  Last week: #{@last_week}
+  Last 3 days: #{last_n(3)}
 %br
 %label
-  Total: #{@total}
+  Last 3 days with 3 day offset: #{last_n_with_offset(3, 3)}
+%br
+%label
+  Last week: #{last_week}
+%br
+%label
+  Last month: #{total}
 %br
 
 = link_to 'New', new_food_path
