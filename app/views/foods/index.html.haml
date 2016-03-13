@@ -1,0 +1,34 @@
+%h1 Foods#index
+%p Find me in app/views/foods/index.html.haml
+%table.table.table-condensed.table-bordered.table-striped
+  %thead
+    %tr
+      %th
+        Date
+      %th
+        Food Name
+      %th
+        Cost
+      %th
+        "..."
+  %tbody
+    - @food.each do |food|
+      %tr
+        %td
+          = food.created_at.strftime("%Y-%m-%d")
+        %td
+          = food.name
+        %td
+          = food.cost
+        %td
+          = link_to 'edit', edit_food_path(food)
+          |
+          = link_to 'delete', food, method: :delete, data: { confirm: 'Are you sure?' }
+%label
+  Last week: #{@last_week}
+%br
+%label
+  Total: #{@total}
+%br
+
+= link_to 'New', new_food_path
