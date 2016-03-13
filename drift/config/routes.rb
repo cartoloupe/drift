@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :workouts
   get 'foods/show'
 
   get 'foods/new'
