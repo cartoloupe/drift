@@ -6,6 +6,8 @@ class FoodsController < ApplicationController
 
     @total = Food.all.last_thirty.map{ |f| f.cost }.reduce(&:+)
     @last_week = Food.all.last_week.map{ |f| f.cost }.reduce(&:+)
+    @last_n = Food.all.last_n_days(3).map{ |f| f.cost }.reduce(&:+)
+    @last_n_with_offset = Food.all.last_n_days_with_offset(3, 3).map{ |f| f.cost }.reduce(&:+)
   end
 
   def show
@@ -55,6 +57,6 @@ class FoodsController < ApplicationController
     end
 
   def food_params
-    params.require(:food).permit(:name, :cost)
+    params.require(:food).permit(:name, :cost, :created_at)
   end
 end
