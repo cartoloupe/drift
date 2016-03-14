@@ -28,7 +28,7 @@ class WorkoutsController < ApplicationController
 
     respond_to do |format|
       if @workout.save
-        format.html { redirect_to @workout, notice: 'Workout was successfully created.' }
+        format.html { redirect_to workouts_path, notice: 'Workout was successfully created.' }
         format.json { render :show, status: :created, location: @workout }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class WorkoutsController < ApplicationController
   def update
     respond_to do |format|
       if @workout.update(workout_params)
-        format.html { redirect_to @workout, notice: 'Workout was successfully updated.' }
+        format.html { redirect_to workouts_path, notice: 'Workout was successfully updated.' }
         format.json { render :show, status: :ok, location: @workout }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class WorkoutsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def workout_params
-      params.require(:workout).permit(:name, :duration)
+      params.require(:workout).permit(:name, :duration, :reps, :sets, :weight)
     end
 end
