@@ -1,14 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @workout.name %>
-</p>
-
-<p>
-  <strong>Duration:</strong>
-  <%= @workout.duration %>
-</p>
+<% %w(name duration reps sets weight).each do |field| %>
+  <p>
+    <strong><%= "#{field.capitalize}:" %></strong>
+    <%= @workout.send(field) %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_workout_path(@workout) %> |
 <%= link_to 'Back', workouts_path %>
