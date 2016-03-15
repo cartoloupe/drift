@@ -1,16 +1,16 @@
 class FoodsController < ApplicationController
   before_action :set_food, only: [:edit, :update, :destroy]
+  before_action :get_foods, only: [:index, :show]
 
   def index
     @food = Food.all.latest.for_user(current_user.id)
   end
 
   def show
-    @food = Food.all
   end
 
   def new
-    @food = Food.new
+    @food = current_user.foods.new
   end
 
   def edit
@@ -51,7 +51,11 @@ class FoodsController < ApplicationController
       @food = Food.find(params[:id])
     end
 
-  def food_params
-    params.require(:food).permit(:name, :cost, :created_at)
-  end
+    def get_foods
+      @food = Food.all.for_user(current_user.id)
+    end
+
+    def food_params
+      params.require(:food).permit(:name, :cost, :created_at)
+    end
 end
