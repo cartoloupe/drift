@@ -2,7 +2,7 @@ class FoodsController < ApplicationController
   before_action :set_food, only: [:edit, :update, :destroy]
 
   def index
-    @food = Food.all
+    @food = Food.all.latest
   end
 
   def show

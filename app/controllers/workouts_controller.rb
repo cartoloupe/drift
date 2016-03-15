@@ -4,7 +4,7 @@ class WorkoutsController < ApplicationController
   # GET /workouts
   # GET /workouts.json
   def index
-    @workouts = Workout.all
+    @workouts = Workout.all.latest
   end
 
   # GET /workouts/1
@@ -69,6 +69,6 @@ class WorkoutsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def workout_params
-      params.require(:workout).permit(:name, :duration, :reps, :sets, :weight)
+      params.require(:workout).permit(:name, :duration, :reps, :sets, :weight, :created_at)
     end
 end
