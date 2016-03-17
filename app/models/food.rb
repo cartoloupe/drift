@@ -1,4 +1,7 @@
 class Food < ActiveRecord::Base
+  scope :latest, -> {
+    order(created_at: :desc)
+  }
   scope :last_thirty, -> {
     where(["created_at > ?", Time.now - 30.days])
   }
