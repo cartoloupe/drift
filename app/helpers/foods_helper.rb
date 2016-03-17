@@ -1,10 +1,10 @@
 module FoodsHelper
   def total
-    Food.all.map{ |f| f.cost }.reduce(&:+)
+    Food.all.for_user(current_user.id).map{ |f| f.cost }.reduce(&:+)
   end
 
   def last_n_with_offset(n, offset)
-    Food.all.last_n_days_with_offset(n, offset).map{ |f| f.cost }.reduce(&:+)
+    Food.all.for_user(current_user.id).last_n_days_with_offset(n, offset).map{ |f| f.cost }.reduce(&:+)
   end
 
   def this_month

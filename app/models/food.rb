@@ -20,5 +20,9 @@ class Food < ActiveRecord::Base
         ["created_at < ?", Time.now - offset.days]
       )
     }
+  scope :for_user,
+    -> (user_id) {
+      where(user_id: user_id)
+    }
 
 end
