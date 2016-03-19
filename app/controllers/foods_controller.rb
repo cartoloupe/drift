@@ -1,9 +1,11 @@
 class FoodsController < ApplicationController
+  include FoodsHelper
+
   before_action :set_food, only: [:edit, :update, :destroy]
   before_action :get_foods, only: [:index, :show]
 
   def index
-    @food = Food.all.latest.for_user(current_user.id)
+    @food = Food.all.latest.for_user(current_user_if_any)
   end
 
   def show
@@ -52,7 +54,7 @@ class FoodsController < ApplicationController
     end
 
     def get_foods
-      @food = Food.all.for_user(current_user.id)
+      @food = Food.all.for_user(current_user_if_any)
     end
 
     def food_params
