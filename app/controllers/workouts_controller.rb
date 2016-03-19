@@ -1,15 +1,26 @@
 class WorkoutsController < ApplicationController
   before_action :set_workout, only: [:show, :edit, :update, :destroy]
+  before_action :set_trends, only: [:trends]
+  protect_from_forgery except: :trends
 
   # GET /workouts
   # GET /workouts.json
   def index
     @workouts = Workout.all.latest
+    @trend_list = Workout.all.map(&:name).uniq
+    @trends = Workout.all.to_a.uniq(&:name)
   end
 
   # GET /workouts/1
   # GET /workouts/1.json
   def show
+  end
+
+  # GET /workouts/:name
+  def trends
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /workouts/new
@@ -65,6 +76,10 @@ class WorkoutsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_workout
       @workout = Workout.find(params[:id])
+    end
+
+    def set_trends
+      @trends = Workout.where(name: params[:name].gsub("_", " "))
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

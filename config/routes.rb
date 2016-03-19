@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'static_pages/contact'
 
   resources :workouts
+  get 'workouts/trends/:name', to: 'workouts#trends', as: :trends
+
   resources :foods
   root 'static_pages#home'
 
