@@ -1,5 +1,22 @@
-%h1 Foods#index
-%p Find me in app/views/foods/index.html.haml
+%div.row
+  %div.col-md-6
+    %label
+      This week: #{this_week}
+    %br
+    %label
+      Last week: #{last_week}
+    %br
+    %label
+      This month: #{this_month}
+    %br
+    %label
+      Last month: #{last_month}
+    %br
+    %label
+      Total: #{total}
+    %br
+  %div.col-md-6
+    = link_to 'New', new_food_path
 %table.table.table-condensed.table-bordered.table-striped
   %thead
     %tr
@@ -24,20 +41,3 @@
           = link_to 'edit', edit_food_path(food)
           |
           = link_to 'delete', food, method: :delete, data: { confirm: 'Are you sure?' }
-%label
-  This week: #{this_week}
-%br
-%label
-  Last week: #{last_week}
-%br
-%label
-  This month: #{this_month}
-%br
-%label
-  Last month: #{last_month}
-%br
-%label
-  Total: #{total}
-%br
-
-= link_to 'New', new_food_path
