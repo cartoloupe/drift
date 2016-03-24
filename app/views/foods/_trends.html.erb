@@ -1,0 +1,33 @@
+<table class="table table-condensed table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Name</th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trends.each do |food| %>
+      <tr>
+        <td><%= food.created_at.strftime("%Y-%m-%d") %></td>
+        <td><%= food.name %></td>
+        <td><%= food.cost %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="row">
+  <div class="col-md-6">
+    <label> Trend this week: <%= @trends.for_user(current_user_if_any).this_week %> </label>
+    <br>
+    <label> Trend last week: <%= @trends.for_user(current_user_if_any).last_week %> </label>
+    <br>
+    <label> Trend this month: <%= @trends.for_user(current_user_if_any).this_month %> </label>
+    <br>
+    <label> Trend last month: <%= @trends.for_user(current_user_if_any).last_month %> </label>
+    <br>
+    <label> Trend total: <%= @trends.for_user(current_user_if_any).total %> </label>
+    <br>
+  </div>
+</div>

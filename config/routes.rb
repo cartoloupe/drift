@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :workouts
   get 'workouts/trends/:name', to: 'workouts#trends', as: :trends
 
+  get 'foods/trends'
   resources :foods
+
   root 'static_pages#home'
 
   # The priority is based upon order of creation: first created -> highest priority.

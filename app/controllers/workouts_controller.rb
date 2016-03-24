@@ -1,6 +1,5 @@
 class WorkoutsController < ApplicationController
   before_action :set_workout, only: [:show, :edit, :update, :destroy]
-  before_action :set_trends, only: [:trends]
   protect_from_forgery except: :trends
 
   # GET /workouts
@@ -18,6 +17,7 @@ class WorkoutsController < ApplicationController
 
   # GET /workouts/:name
   def trends
+    set_trends
     respond_to do |format|
       format.js
     end
