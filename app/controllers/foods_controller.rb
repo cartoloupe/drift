@@ -18,6 +18,13 @@ class FoodsController < ApplicationController
   def edit
   end
 
+  def trends
+    set_trends
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def update
     respond_to do |format|
       if @food.update(food_params)
@@ -59,5 +66,9 @@ class FoodsController < ApplicationController
 
     def food_params
       params.require(:food).permit(:name, :cost, :created_at)
+    end
+
+    def set_trends
+      @trends = Food.where("name like ?", "%#{food_params[:name]}%").latest.for_user(current_user_if_any)
     end
 end

@@ -7,12 +7,16 @@ module FoodsHelper
     end
   end
 
+  def all
+    Food.all
+  end
+
   def total
-    Food.all.for_user(current_user_if_any).map{ |f| f.cost }.reduce(&:+)
+    all.for_user(current_user_if_any).map{ |f| f.cost }.reduce(&:+)
   end
 
   def last_n_with_offset(n, offset)
-    Food.all.for_user(current_user_if_any).last_n_days_with_offset(n, offset).map{ |f| f.cost }.reduce(&:+)
+    all.for_user(current_user_if_any).last_n_days_with_offset(n, offset).map{ |f| f.cost }.reduce(&:+)
   end
 
   def this_month

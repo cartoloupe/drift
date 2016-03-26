@@ -41,3 +41,9 @@
           = link_to 'edit', edit_food_path(food)
           |
           = link_to 'delete', food, method: :delete, data: { confirm: 'Are you sure?' }
+
+= form_for(:food, url: foods_trends_path, method: :get, remote: true) do |f|
+  = f.text_field :name, value: "name of food"
+  = f.submit "See trends"
+
+.results
