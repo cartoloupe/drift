@@ -38,7 +38,8 @@ class FoodsController < ApplicationController
   end
 
   def create
-    @food = current_user.foods.new(food_params)
+    @food = current_user.foods.new(validated_food_params)
+
     if @food.save
       redirect_to foods_path, notice: 'Food was successfully created.'
     else
@@ -66,6 +67,12 @@ class FoodsController < ApplicationController
 
     def food_params
       params.require(:food).permit(:name, :cost, :created_at)
+    end
+
+    def validated_food_params
+      food_params.tap do |food|
+        food["cost"] = food["cost"].gsub("$", "")
+      end
     end
 
     def set_trends
