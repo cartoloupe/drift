@@ -1,4 +1,6 @@
 %div.row
+  = line_chart Food.group_by_day(:created_at).sum(:cost)
+%div.row
   %div.col-md-6
     %label
       This week: #{this_week}
