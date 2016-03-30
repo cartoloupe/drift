@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<% %w(name duration reps sets weight).each do |field| %>
+<% %w(name duration reps sets weight notes).each do |field| %>
   <p>
     <strong><%= "#{field.capitalize}:" %></strong>
     <%= @workout.send(field) %>

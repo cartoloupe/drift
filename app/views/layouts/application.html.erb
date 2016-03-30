@@ -10,13 +10,10 @@
 <body>
   <div class="container">
     <%= render "layouts/nav" %>
+    <!-- devise said to do this -->
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </div>
-
-<!-- devise said to do this -->
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-
 
 </body>
 </html>
