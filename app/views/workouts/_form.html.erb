@@ -32,6 +32,10 @@
     <%= f.number_field :weight, class: "form-control" %>
   </div>
   <div class="field form-group">
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes, class: "form-control" %>
+  </div>
+  <div class="field form-group">
     <%= f.label :created_at %><br>
     <%= f.text_field :created_at, class: "form-control" %>
   </div>
