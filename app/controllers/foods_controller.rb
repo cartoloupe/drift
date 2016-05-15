@@ -1,4 +1,5 @@
 class FoodsController < ApplicationController
+  include GenericHelper
   include FoodsHelper
 
   before_action :set_food, only: [:edit, :update, :destroy]

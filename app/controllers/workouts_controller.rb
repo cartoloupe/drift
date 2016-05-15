@@ -1,13 +1,16 @@
 class WorkoutsController < ApplicationController
+  include GenericHelper
+  include WorkoutsHelper
+
   before_action :set_workout, only: [:show, :edit, :update, :destroy]
   protect_from_forgery except: :trends
 
   # GET /workouts
   # GET /workouts.json
   def index
-    @workouts = Workout.all.latest
-    @trend_list = Workout.all.map(&:name).uniq
-    @trends = Workout.all.to_a.uniq(&:name)
+    @workouts = Workout.all.latest.for_user(current_user_if_any)
+    @trends = @workouts.to_a.uniq(&:name)
+    @trend_list = @trends.map(&:name).uniq
   end
 
   # GET /workouts/1
@@ -79,7 +82,9 @@ class WorkoutsController < ApplicationController
     end
 
     def set_trends
-      @trends = Workout.where(name: params[:name].gsub("_", " "))
+      @trends = Workout
+        .for_user(current_user_if_any)
+        .where(name: params[:name].gsub("_", " "))
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
