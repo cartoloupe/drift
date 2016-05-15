@@ -1,6 +1,6 @@
 @import "bootstrap";
 
-@media (max-width: 600px) {
+@media (max-width: 736px) {
   .btn {
     padding:2px 4px;
     font-size: 5vw;
@@ -14,4 +14,13 @@
 
 a.btn::visited {
   color: white;
+}
+
+.trends li {
+  border: 1px solid gray;
+  border-radius: 20%;
+}
+
+.the-bottom {
+  margin-bottom: 20%;
 }
