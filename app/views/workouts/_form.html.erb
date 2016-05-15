@@ -37,7 +37,7 @@
   </div>
   <div class="field form-group">
     <%= f.label :created_at %><br>
-    <%= f.text_field :created_at, class: "form-control" %>
+    <%= f.select :created_at, last_ten_days, {}, class: 'form-control' %>
   </div>
   <div class="actions form-group">
     <%= f.submit class: "btn btn-primary" %>
