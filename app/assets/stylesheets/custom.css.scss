@@ -1,1 +1,17 @@
 @import "bootstrap";
+
+@media (max-width: 600px) {
+  .btn {
+    padding:2px 4px;
+    font-size: 5vw;
+    color: white;
+    line-height: 1;
+    border-radius:3px;
+    background-color: green;
+  }
+
+}
+
+a.btn::visited {
+  color: white;
+}
