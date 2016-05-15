@@ -1,12 +1,4 @@
 module FoodsHelper
-  def current_user_if_any
-    if current_user
-      current_user.id
-    else
-      User.where(email: 'guest_user@example.com').first.id
-    end
-  end
-
   def all
     Food.all
   end

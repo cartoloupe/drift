@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329234742) do
+ActiveRecord::Schema.define(version: 20160515182417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,10 @@ ActiveRecord::Schema.define(version: 20160329234742) do
     t.integer  "sets"
     t.decimal  "weight"
     t.text     "notes"
+    t.integer  "user_id"
   end
 
+  add_index "workouts", ["user_id"], name: "index_workouts_on_user_id", using: :btree
+
+  add_foreign_key "workouts", "users"
 end
