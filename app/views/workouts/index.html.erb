@@ -36,11 +36,15 @@
 <br>
 
 <h1>Trends</h1>
-<ul class="nav nav-tabs">
-  <% @trend_list.each_with_index do |workout, index| %>
-    <li class="<%= 'active' if index == 0 %>">
-      <%= link_to workout, trends_path(workout.gsub(" ", "_")), remote: true %>
-    </li>
-  <% end %>
-</ul>
+<div class="trends">
+  <ul class="nav nav-pills">
+    <% @trend_list.each_with_index do |workout, index| %>
+      <li>
+        <%= link_to workout, trends_path(workout.gsub(" ", "_")), remote: true %>
+      </li>
+    <% end %>
+  </ul>
+</div>
 <div class="results"></div>
+<div class="the-bottom"></div>
+
