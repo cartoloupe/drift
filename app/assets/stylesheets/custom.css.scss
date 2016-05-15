@@ -8,11 +8,16 @@
     line-height: 1;
     border-radius:3px;
     background-color: green;
+
+    &-danger {
+      color: white;
+      background-color: red;
+    }
   }
 
 }
 
-a.btn::visited {
+a.btn:visited {
   color: white;
 }
 
