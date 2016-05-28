@@ -1,0 +1,8 @@
+= form_for food, :html => {:class => 'form-inline'}, :remote => true do |f|
+  .field.form-group.form-inline
+    = f.label :usage, 'm', :value => 'monthly', class: 'form-inline'
+    = f.radio_button :usage, 'monthly', :onclick => "$(this.form).trigger('submit.rails');"
+    = f.label :usage, 'w', :value => 'weekly'
+    = f.radio_button :usage, 'weekly', :onclick => "$(this.form).trigger('submit.rails');"
+    = f.label :usage, 'd', :value => 'daily'
+    = f.radio_button :usage, 'daily', :onclick => "$(this.form).trigger('submit.rails');"

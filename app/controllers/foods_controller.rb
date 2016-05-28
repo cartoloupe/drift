@@ -67,7 +67,13 @@ class FoodsController < ApplicationController
     end
 
     def food_params
-      params.require(:food).permit(:name, :cost, :created_at)
+      params.require(:food)
+            .permit(
+              :name,
+              :cost,
+              :created_at,
+              :usage
+            )
     end
 
     def validated_food_params
