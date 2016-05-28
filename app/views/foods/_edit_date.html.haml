@@ -1,0 +1,3 @@
+.field.form-group
+  = f.label :created_at
+  = f.select :created_at, days_around_date(@food.created_at), {}, class: 'form-control'
