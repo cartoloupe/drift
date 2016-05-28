@@ -5,8 +5,6 @@
   .field.form-group
     = f.label :cost
     = f.text_field :cost, class: 'form-control'
-  .field.form-group
-    = f.label :created_at
-    = f.select :created_at, last_ten_days, {}, class: 'form-control'
+  = render type, f: f
   .actions.form-group
     = f.submit class: 'btn btn-primary'
