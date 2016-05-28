@@ -18,7 +18,8 @@
       Total: #{total}
     %br
   %div.col-md-6
-    = link_to 'New', new_food_path
+    = link_to 'New', new_food_path, class: 'btn btn-lg btn-success'
+
 %table.table.table-condensed.table-bordered.table-striped
   %thead
     %tr
@@ -26,10 +27,16 @@
         Date
       %th
         Food Name
+      %th.hotkey
+        Usage:
+        %span.fl [m]onthly,
+        %span.fl [w]eekly,
+        %span.fl [d]aily
       %th
         Cost
       %th
-        
+        CRUD
+
   %tbody
     - @food.each do |food|
       %tr
@@ -37,6 +44,8 @@
           = food.created_at.strftime("%Y-%m-%d")
         %td
           = food.name
+        %td
+          = render 'usage', food: food
         %td
           = food.cost
         %td
